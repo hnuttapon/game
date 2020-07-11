@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkTrainer : MonoBehaviour
+public class move : MonoBehaviour
 {
-    public Animation walk;
+    public Animator walk;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //walk = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -16,18 +16,19 @@ public class WalkTrainer : MonoBehaviour
     {
         if (transform.hasChanged)
         {
-            walk.Play();
+            walk.GetComponent<Animator>().enabled = true;
             StartCoroutine(Wait());
+
         }
-        else if (!transform.hasChanged)
+        else if(!transform.hasChanged)
         {
-            walk.Stop();
+            walk.GetComponent<Animator>().enabled = false;
         }
     }
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         transform.hasChanged = false;
     }
-} 
+}
