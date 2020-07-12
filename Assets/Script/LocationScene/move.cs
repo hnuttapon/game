@@ -9,7 +9,7 @@ public class move : MonoBehaviour
     int animate;
     // Start is called before the first frame update
     void Start()
-    {
+    {//abc
         walk = GetComponent<Animator>();
        // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run.controller") as RuntimeAnimatorController;
 
