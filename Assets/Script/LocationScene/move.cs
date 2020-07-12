@@ -5,10 +5,14 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     public Animator walk;
+    
+    int animate;
     // Start is called before the first frame update
     void Start()
     {
-        //walk = GetComponent<Animator>();
+        walk = GetComponent<Animator>();
+       // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run.controller") as RuntimeAnimatorController;
+
     }
 
     // Update is called once per frame
@@ -16,13 +20,16 @@ public class move : MonoBehaviour
     {
         if (transform.hasChanged)
         {
-            walk.GetComponent<Animator>().enabled = true;
+            // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run") as RuntimeAnimatorController;
+            walk.SetTrigger("Play");
             StartCoroutine(Wait());
 
         }
         else if(!transform.hasChanged)
         {
-            walk.GetComponent<Animator>().enabled = false;
+            walk.SetTrigger("Stop");
+
+
         }
     }
 
