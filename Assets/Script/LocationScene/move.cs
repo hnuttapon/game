@@ -5,14 +5,14 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     public Animator walk;
-    
+
     int animate;
     // Start is called before the first frame update
     void Start()
     {
         //comment
         walk = GetComponent<Animator>();
-       // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run.controller") as RuntimeAnimatorController;
+        // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run.controller") as RuntimeAnimatorController;
 
     }
 
@@ -23,23 +23,23 @@ public class move : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         bool run = x != walk.transform.position.x || z != walk.transform.position.z;
         if (transform.hasChanged)
-            {
-           // if (run) { 
-            walk.SetBool("isWalking",run);
-                // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run") as RuntimeAnimatorController;
-                walk.SetTrigger("Play");
-                StartCoroutine(Wait());
-               //}
+        {
+            // if (run) { 
+            walk.SetBool("isWalking", run);
+            // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run") as RuntimeAnimatorController;
+            walk.SetTrigger("Play");
+            StartCoroutine(Wait());
+            //}
 
-            }
-            else if (!transform.hasChanged)
-            {
-                //if(run != true)
-                walk.SetTrigger("Stop");
+        }
+        else if (!transform.hasChanged)
+        {
+            //if(run != true)
+            walk.SetTrigger("Stop");
 
 
-            }
-        
+        }
+
     }
 
     IEnumerator Wait()
