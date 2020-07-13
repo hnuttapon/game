@@ -22,6 +22,7 @@ public class move : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         bool run = x != walk.transform.position.x || z != walk.transform.position.z;
+        
         if (transform.hasChanged)
         {
             // if (run) { 
@@ -30,14 +31,15 @@ public class move : MonoBehaviour
             walk.SetTrigger("Play");
             StartCoroutine(Wait());
             //}
-
+            print("change");
         }
         else if (!transform.hasChanged)
         {
             //if(run != true)
+            print("n");
             walk.SetTrigger("Stop");
 
-
+            
         }
 
     }
