@@ -17,21 +17,29 @@ public class move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        bool run = x != walk.transform.position.x || z != walk.transform.position.z;
         if (transform.hasChanged)
-        {
-            // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run") as RuntimeAnimatorController;
-            walk.SetTrigger("Play");
-            StartCoroutine(Wait());
+            {
+           // if (run) { 
+            walk.SetBool("isWalking",run);
+                // walk.runtimeAnimatorController = Resources.Load("Assets/Kevin Iglesias/Basic Motions Pack/AnimationControllers/BasicMotions@Run") as RuntimeAnimatorController;
+                walk.SetTrigger("Play");
+                StartCoroutine(Wait());
+               //}
 
-        }
-        else if(!transform.hasChanged)
-        {
-            walk.SetTrigger("Stop");
+            }
+            else if (!transform.hasChanged)
+            {
+                //if(run != true)
+                walk.SetTrigger("Stop");
 
 
-        }
+            }
+        
     }
 
     IEnumerator Wait()
